@@ -46,6 +46,11 @@ public class TestNGAnnotations123 {
   public void tEstCase7() {
 	  System.out.println("inside tEstCase7");
   }
+  @Test(priority=-3)
+  public void testcase8()
+  {
+	  System.out.println("inside testcase8");
+  }
   
   @BeforeMethod
   public void beforeMethod() {
