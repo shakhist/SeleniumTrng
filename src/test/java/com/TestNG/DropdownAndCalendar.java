@@ -2,6 +2,7 @@ package com.TestNG;
 
 import org.testng.annotations.Test;
 
+import com.pages.DropdownCalender;
 import com.utility.Library;
 
 import org.testng.annotations.BeforeSuite;
@@ -19,7 +20,11 @@ public class DropdownAndCalendar extends Library {
   @Test
   public void form()
   {
-	  
+	  driver.findElement(DropdownCalender.firstname).sendKeys("Shakhi");
+	  driver.findElement(DropdownCalender.lastname).sendKeys("Abraham");
+	  driver.findElement(DropdownCalender.genderFemale).click();
+	  driver.findElement(DropdownCalender.mobile).sendKeys("95893456789");
+	 // driver.findElement(DropdownCalender.)
   }
   @BeforeSuite
   public void beforeSuite()
