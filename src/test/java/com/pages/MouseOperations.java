@@ -8,4 +8,6 @@ public static By clickEdit=By.xpath("//span[text()='Edit']");
 public static By clickQuit=By.xpath("//span[text()='Quit']");
 public static By doubleclick=By.xpath("//span[contains(text(),'Double')]/preceding-sibling::div");
 public static By iframe=By.xpath("//iframe");
+public static By draggable=By.id("draggable");
+public static By droppable=By.id("droppable");
 }

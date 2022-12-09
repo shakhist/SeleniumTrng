@@ -23,7 +23,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 
 public class VerifyMouseOperations extends Library{
-@Test(priority=1)
+@Test(priority=1,groups= {"functional"})
   public void MouseOperationsrightClick() {
 	  System.out.println("inside mouse rightclick method");
 	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(25));
@@ -32,7 +32,7 @@ public class VerifyMouseOperations extends Library{
 	  Assert.assertEquals(str, objProperties.getProperty("JQeryTitle"));
 	  
   }
-  @Test(priority=2)
+  @Test(priority=2,groups= {"sanity"})
   public void rightClick() throws InterruptedException
   {
 	  Actions ac=new Actions(driver);
@@ -51,7 +51,7 @@ public class VerifyMouseOperations extends Library{
 	 System.out.println("Quit Alert text is "+al.getText());
 	 al.accept();
   }
-  @Test(priority=3)
+  @Test(priority=3,groups= {"sanity"})
   public void doubleClick() throws InterruptedException
   {
 	  Thread.sleep(3000);
@@ -61,7 +61,7 @@ System.out.println("Thread is "+Thread.currentThread().getId());
 	  String gtitle=driver.getTitle();
 	  Assert.assertEquals(gtitle, objProperties.getProperty("doubleClickTitle"));
   }
-  @Test(priority=4)
+  @Test(priority=4,groups= {"functional"})
   public void doubleClick1() throws InterruptedException
   {
 	  Thread.sleep(3000);
@@ -76,6 +76,18 @@ System.out.println("Thread is "+Thread.currentThread().getId());
 	  Actions ac =new Actions(driver);
 	  ac.doubleClick(el).build().perform();
   }
+  @Test(priority=5,groups= {"functional","sanity"})
+  public void dragAndDrop()
+  {
+	  System.out.println("inside drag and drop");
+	  driver.get(objProperties.getProperty("mouseOperationDragAndDrop"));
+	  WebElement fr1=driver.findElement(MouseOperations.iframe);
+	  driver.switchTo().frame(fr1);
+	  WebElement el1=driver.findElement(MouseOperations.draggable);
+	  WebElement el2=driver.findElement(MouseOperations.droppable);
+	  Actions ac=new Actions(driver);
+	  ac.dragAndDrop(el1, el2).build().perform();
+  }
   @BeforeSuite
   public void beforeSuite() throws InterruptedException {
 	  ReadPropertiesFile();
@@ -85,7 +97,7 @@ System.out.println("Thread is "+Thread.currentThread().getId());
 
   @AfterSuite
   public void afterSuite() {
-	 // driver.quit();
+	  driver.quit();
 
   }
 
