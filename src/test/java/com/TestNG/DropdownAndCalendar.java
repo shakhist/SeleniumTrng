@@ -26,9 +26,11 @@ public class DropdownAndCalendar extends Library {
 	  
 	  Assert.assertEquals(title, driver.getTitle());
   }
-  @Test
+  @Test(priority=2)
   public void form()
   {
+	  WebDriverWait wait2=new WebDriverWait(driver,Duration.ofSeconds(20));
+	  wait2.until(ExpectedConditions.elementToBeClickable(DropdownCalender.firstname));
 	  driver.findElement(DropdownCalender.firstname).sendKeys("Shakhi");
 	  driver.findElement(DropdownCalender.lastname).sendKeys("Abraham");
 	  driver.findElement(DropdownCalender.email).sendKeys("sj2@gmail.com");
@@ -78,6 +80,7 @@ for (WebElement li1:li)
 driver.findElement(DropdownCalender.subject).click();
 driver.findElement(DropdownCalender.sprots).click();
 driver.findElement(DropdownCalender.currentaddress).sendKeys("4426 yorktown");
+driver.close();
   }
   @BeforeSuite
   public void beforeSuite()
